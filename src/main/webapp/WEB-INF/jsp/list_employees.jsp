@@ -37,7 +37,7 @@
                                         <i class="fas fa-cogs text-green"></i>
                                         Изменить
                                     </a>
-                                    <a class="dropdown-item" href="javascript:deletes('{{ $test->id }}', '{{ $test->question }}');">
+                                    <a class="dropdown-item" href="">
                                         <i class="fas fa-trash-alt text-green"></i>
                                         Удалить
                                     </a>
