@@ -2,20 +2,40 @@ package com.kadyrkuleldos.test_task.controllers;
 
 import com.kadyrkuleldos.test_task.models.Employees;
 import com.kadyrkuleldos.test_task.service.EmployeesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
 
-    @Autowired
-    private EmployeesService service;
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+    private final EmployeesService service;
 
+    @Autowired
+    public EmployeeController(EmployeesService employeesService) {
+        this.service = employeesService;
+    }
+
+    @RequestMapping("/api/employees")
+    public List<Employees> getEmployees() {
+        return service.getEmployeesList();
+    }
+
+    @RequestMapping("/api/employee")
+    public void insertEmployee(@RequestBody Employees employees) {
+        service.saveEmployees(employees);
+    }
+
+    /*
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String addEmployee(ModelMap modelMap, HttpServletRequest request) {
         String first_name = request.getParameter("firstname");
@@ -51,5 +71,5 @@ public class EmployeeController {
 
         return request.getPathInfo();
     }
-
+    */
 }

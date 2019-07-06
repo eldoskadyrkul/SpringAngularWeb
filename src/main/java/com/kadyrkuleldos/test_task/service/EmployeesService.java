@@ -1,17 +1,30 @@
 package com.kadyrkuleldos.test_task.service;
 
 import com.kadyrkuleldos.test_task.connector.ConnectionPool;
+import com.kadyrkuleldos.test_task.exception.EmployeesNotFoundException;
 import com.kadyrkuleldos.test_task.models.Employees;
 import com.kadyrkuleldos.test_task.models.EmployeesModels;
+import com.kadyrkuleldos.test_task.repository.EmployeesRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class EmployeesService {
+
+    private final EmployeesRepo employeesRepo;
+
+    @Autowired
+    public EmployeesService(EmployeesRepo repo) {
+        this.employeesRepo = repo;
+    }
+
+
 
     private static final String GET_EMPLOYEES_QUERY = "SELECT `employees`.`ID`, \n" +
             "`employees`.`firstname`, `employees`.`lastname`, \n" +
@@ -25,6 +38,35 @@ public class EmployeesService {
             "`employees`.`lastname`='%s',`employees`.`surname`='%s', \n" +
             "`employees`.`email`='%s',`employees`.`gender`='%s' \n" +
             "WHERE `employees`.`ID`= '%s'";
+
+
+    public List<Employees> getEmployeesList()
+    {
+        return employeesRepo.findAll();
+    }
+
+    public void saveEmployees(Employees employees) {
+        if(employeesRepo.existsById((long) employees.getID())) {
+            Employees employeesFromDB = null;
+            try {
+                employeesFromDB = employeesRepo.findById(employees.getID())
+                        .orElseThrow(()-> new EmployeesNotFoundException(String.format("Увы, такой сотрудник уже есть %s.", employees.getFirstname())));
+            } catch (EmployeesNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (employees.getID() == Integer.parseInt(null)) {
+                employees.setFirstname(employeesFromDB.getFirstname());
+                employees.setLastname(employeesFromDB.getLastname());
+                employees.setSurname(employeesFromDB.getSurname());
+                employees.setEmail(employeesFromDB.getEmail());
+                employees.setGender(employeesFromDB.getGender());
+            }
+        }
+
+        employeesRepo.save(employees);
+    }
+
+
 
     public Employees getEmployeesFromID(EmployeesModels employeesModels) {
         Employees res = null;
