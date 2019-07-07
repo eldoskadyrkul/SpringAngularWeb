@@ -12,12 +12,23 @@ export class EmployeeServiceService {
     this.employeeURL = "http://localhost:8080/employees";
   }
 
-  public findAll(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.employeeURL);
+  getEmployee(id : number) : Observable<Object> {
+    return this.http.get(`${this.employeeURL}/${id}`)
   }
 
-  public saveEmployee(employee: Employee) {
-    return this.http.post<Employee[]>(this.employeeURL, employee);
+  createEmployee(employee : Object) : Observable<Object> {
+    return this.http.post(this.employeeURL, employee);
   }
 
+  updateEmployee(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.employeeURL}/${id}`, value);
+  }
+
+  deleteEmployee(id: number): Observable<any> {
+    return this.http.delete(`${this.employeeURL}/${id}`, { responseType: 'text' });
+  }
+
+  getEmployeesList(): Observable<any> {
+    return this.http.get(`${this.employeeURL}`);
+  }
 }

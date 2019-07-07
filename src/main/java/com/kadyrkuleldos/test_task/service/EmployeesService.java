@@ -1,18 +1,13 @@
 package com.kadyrkuleldos.test_task.service;
 
-import com.kadyrkuleldos.test_task.connector.ConnectionPool;
 import com.kadyrkuleldos.test_task.exception.EmployeesNotFoundException;
 import com.kadyrkuleldos.test_task.models.Employees;
-import com.kadyrkuleldos.test_task.models.EmployeesModels;
 import com.kadyrkuleldos.test_task.repository.EmployeesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeesService {
