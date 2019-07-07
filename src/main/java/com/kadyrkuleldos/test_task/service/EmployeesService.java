@@ -25,6 +25,7 @@ public class EmployeesService {
     }
 
 
+/*
 
     private static final String GET_EMPLOYEES_QUERY = "SELECT `employees`.`ID`, \n" +
             "`employees`.`firstname`, `employees`.`lastname`, \n" +
@@ -39,6 +40,7 @@ public class EmployeesService {
             "`employees`.`email`='%s',`employees`.`gender`='%s' \n" +
             "WHERE `employees`.`ID`= '%s'";
 
+*/
 
     public List<Employees> getEmployeesList()
     {
@@ -66,7 +68,7 @@ public class EmployeesService {
         employeesRepo.save(employees);
     }
 
-
+/*
 
     public Employees getEmployeesFromID(EmployeesModels employeesModels) {
         Employees res = null;
@@ -125,5 +127,5 @@ public class EmployeesService {
             e.printStackTrace();
         }
         return res;
-    }
+    }*/
 }
