@@ -48,7 +48,7 @@ public class EmployeeController {
         if (employeesRepo.existsById((long) employees.getID())) {
             Employees employeesFromID = null;
             try {
-                employeesFromID = employeesRepo.findById((long) employees.getID())
+                employeesFromID = employeesRepo.findById(employees.getID())
                         .orElseThrow(()-> {
                             return new EmployeesNotFoundException(String.format("Данный ID сотрудника не существует " + employees.getID()));
                         });
@@ -62,7 +62,7 @@ public class EmployeeController {
             employees.setGender(employeesFromID.getGender());
         }
 
-        employeesRepo.findById((long) employeeID);
+        employeesRepo.findById(employeeID);
 
         return ResponseEntity.ok().body(employees);
     }
@@ -73,7 +73,7 @@ public class EmployeeController {
         if (employeesRepo.existsById((long) employees.getID())) {
             Employees employees1 = null;
             try {
-                employees1 = employeesRepo.findById((long) employees.getID())
+                employees1 = employeesRepo.findById(employees.getID())
                         .orElseThrow(() -> {
                             return new EmployeesNotFoundException("Данный ID сотрудника не существует " + employees.getID());
                         });

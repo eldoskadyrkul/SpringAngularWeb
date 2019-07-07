@@ -46,7 +46,7 @@ public class EmployeesService {
         if(employeesRepo.existsById((long) employees.getID())) {
             Employees employeesFromDB = null;
             try {
-                employeesFromDB = employeesRepo.findById((long) employees.getID())
+                employeesFromDB = employeesRepo.findById(employees.getID())
                         .orElseThrow(()-> new EmployeesNotFoundException(String.format("Увы, такой сотрудник уже есть %s.", employees.getFirstname())));
             } catch (EmployeesNotFoundException e) {
                 e.printStackTrace();
@@ -62,6 +62,7 @@ public class EmployeesService {
 
         employeesRepo.save(employees);
     }
+
 
 /*
 

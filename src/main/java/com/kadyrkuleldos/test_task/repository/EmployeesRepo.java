@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeesRepo extends JpaRepository<Employees, Long> {
-    /*String searchQuery =  "SELECT `employees`.`ID`, \n" +
+    String searchQuery =  "SELECT `employees`.`ID`, \n" +
             "`employees`.`firstname`, `employees`.`lastname`, \n" +
             "`employees`.`surname`, `employees`.`email`, \n" +
             "`employees`.`gender` FROM `test-application`.`employees` \n" +
@@ -35,5 +35,5 @@ public interface EmployeesRepo extends JpaRepository<Employees, Long> {
             @Param("surname") String surname,
             @Param("email") String email,
             @Param("gender") String gender
-    );*/
+    );
 }
