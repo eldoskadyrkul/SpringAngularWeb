@@ -3,16 +3,16 @@ package com.kadyrkuleldos.test_task.models;
 public class Employees {
 
     private int ID;
-    private String Firstname;
-    private String Lastname;
+    private String firstname;
+    private String lastname;
     private String Surname;
     private String Email;
     private String Gender;
 
-    public Employees(int ID, String firstname, String lastname, String surname, String email, String gender) {
+    public Employees(int ID, String firstnameEmp, String lastnameEmp, String surname, String email, String gender) {
         this.ID = ID;
-        Firstname = firstname;
-        Lastname = lastname;
+        firstname = firstnameEmp;
+        lastname = lastnameEmp;
         Surname = surname;
         Email = email;
         Gender = gender;
@@ -29,19 +29,19 @@ public class Employees {
     }
 
     public String getFirstname() {
-        return Firstname;
+        return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        Firstname = firstname;
+    public void setFirstname(String firstnameEmp) {
+        firstname = firstnameEmp;
     }
 
     public String getLastname() {
-        return Lastname;
+        return lastname;
     }
 
-    public void setLastname(String lastname) {
-        Lastname = lastname;
+    public void setLastname(String lastnameEmp) {
+        lastname = lastnameEmp;
     }
 
     public String getSurname() {
