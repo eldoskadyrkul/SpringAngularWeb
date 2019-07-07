@@ -8,6 +8,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { CreateEmployeesComponent } from './employees/create-employees/create-employees.component';
 import { EmployeesDetailsComponent } from './employees/employees-details/employees-details.component';
 import {FormsModule} from "@angular/forms";
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
