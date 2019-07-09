@@ -1,5 +1,8 @@
 package com.kadyrkuleldos.test_task.models;
 
+import javax.persistence.Entity;
+
+@Entity(name = "EmployeeModels")
 public class EmployeesModels {
 
     private int ID;

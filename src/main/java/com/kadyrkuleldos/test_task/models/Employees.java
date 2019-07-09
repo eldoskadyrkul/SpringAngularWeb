@@ -1,5 +1,11 @@
 package com.kadyrkuleldos.test_task.models;
 
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.Entity;
+
+@Entity(name = "Employee")
+@DynamicUpdate
 public class Employees {
 
     private int ID;

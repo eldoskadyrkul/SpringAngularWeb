@@ -1,7 +1,9 @@
 package com.kadyrkuleldos.test_task.models;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity(name = "Wealth")
 public class Wealth {
     private int ID;
     private String category_wealth;

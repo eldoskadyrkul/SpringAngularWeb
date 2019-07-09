@@ -7,7 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.kadyrkuleldos.test_task.controllers", "com.kadyrkuleldos.test_task.service"})
+@ComponentScan(basePackages = {"com.kadyrkuleldos.test_task.controllers", "com.kadyrkuleldos.test_task.service",
+        "com.kadyrkuleldos.test_task.repository"})
 @EnableJpaRepositories(basePackages = {"com.kadyrkuleldos.test_task.repository"})
 public class TestTaskApplication {
     public static void main(String[] args) {
